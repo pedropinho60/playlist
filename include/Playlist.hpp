@@ -13,8 +13,13 @@ private:
     LinkedList<Song> songs;
 
 public:
+    Playlist();
+    Playlist(std::string name);
     std::string getName();
     LinkedList<Song> &getSongs();
+    void addSong(Song song);
+    void removeSong(std::string title);
+    void printSongs();
 };
 
 #endif

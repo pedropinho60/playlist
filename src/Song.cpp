@@ -1,6 +1,11 @@
 #include "Song.hpp"
 #include <string>
 
+Song::Song(){
+    setTitle("");
+    setAuthor("");
+}
+
 Song::Song(std::string title, std::string author){
     setTitle(title);
     setAuthor(author);

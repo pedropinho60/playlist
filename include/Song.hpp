@@ -11,6 +11,7 @@ private:
     std::string author; // Autor da música
 
 public:
+    Song();
     Song(std::string title, std::string author);
     std::string getTitle();
     std::string getAuthor();

@@ -10,7 +10,7 @@ class Node{
 
 public:
     //Construtor que recebe o valor a ser colocado no nó
-    Node(const T value);
+    Node(const T &value);
     //Retorna o valor do nó atual
     T getValue();
     //Retorna o ponteiro para o próximo nó
@@ -20,5 +20,31 @@ public:
     //Altera o ponteiro para o próximo nó
     void setNext(Node<T> *next);
 };
+
+template <typename T>
+Node<T>::Node(const T &value){
+    setValue(value);
+    setNext(nullptr);
+}
+
+template <typename T>
+T Node<T>::getValue(){
+    return value;
+}
+
+template <typename T>
+Node<T> *Node<T>::getNext(){
+    return next;
+}
+
+template <typename T>
+void Node<T>::setValue(T value){
+    this->value = value;
+}
+
+template <typename T>
+void Node<T>::setNext(Node<T> *next){
+    this->next = next;
+}
 
 #endif
