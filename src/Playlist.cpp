@@ -12,6 +12,10 @@ Playlist::Playlist(std::string name){
     this->name = name;
 }
 
+Playlist::~Playlist(){
+    songs.clear();
+}
+
 std::string Playlist::getName(){
     return name;
 }
@@ -24,42 +28,29 @@ void Playlist::addSong(Song song){
     songs.add(song);
 }
 
+/**
+ * @brief Remove a música especificada da playlist.
+ * 
+ * @param title Título da música.
+ */
 void Playlist::removeSong(std::string title){
-    Node<Song> *currNode = songs.getHead();
-    Node<Song> *prevNode = nullptr;
-
-    while(currNode != nullptr){
-        if(currNode->getValue().getTitle() == title){
-            if(prevNode != nullptr){
-                prevNode->setNext(currNode->getNext());
-                if(currNode == songs.getTail()){
-                    songs.setTail(prevNode);
-                }
-            }
-            else{
-                songs.setHead(currNode->getNext());
-                if(songs.getHead() == nullptr){
-                    songs.setTail(nullptr);
-                }
-            }
-            delete currNode;
-        }
-        prevNode = currNode;
-        currNode = currNode->getNext();
-    }
+    this->getSongs().removeValue(Song(title));
 }
 
+/**
+ * @brief Imprime as músicas da playlist.
+ * 
+ */
 void Playlist::printSongs(){
-    Node<Song> *currNode = songs.getHead();
+    auto head = getSongs().getHead();
+    getSongs().print();
+}
 
-    while(currNode != nullptr){
-        std::cout << "Título: " << currNode->getValue().getTitle() << std::endl;
-        std::cout << "Autor: " << currNode->getValue().getAuthor() << std::endl;
+bool Playlist::operator==(Playlist &b){
+    return this->getName() == b.getName();
+}
 
-        currNode = currNode->getNext();
-
-        if(currNode != nullptr) {
-            std::cout << std::endl;
-        }
-    }
+std::ostream& operator<<(std::ostream& os, const Playlist& playlist){
+    os << "\"" << playlist.name << "\" - " << playlist.songs.getSize() << " música(s).";
+    return os;
 }

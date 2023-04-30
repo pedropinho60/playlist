@@ -1,7 +1,11 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
-// @brief Essa classe representa um nó de uma lista encadeada
+/**
+ * @brief Classe que representa um nó de uma lista encadeada
+ * 
+ * @tparam T Tipo do valor armazenado no nó.
+ */
 template <typename T>
 class Node{
 
@@ -10,7 +14,7 @@ class Node{
 
 public:
     //Construtor que recebe o valor a ser colocado no nó
-    Node(const T &value);
+    Node(T &value);
     //Retorna o valor do nó atual
     T getValue();
     //Retorna o ponteiro para o próximo nó
@@ -22,7 +26,7 @@ public:
 };
 
 template <typename T>
-Node<T>::Node(const T &value){
+Node<T>::Node(T &value){
     setValue(value);
     setNext(nullptr);
 }

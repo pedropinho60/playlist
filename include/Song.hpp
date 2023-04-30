@@ -2,6 +2,7 @@
 #define SONG_HPP
 
 #include <string>
+#include <iostream>
 
 // Classe que representa uma música, contendo título e autor
 class Song{
@@ -12,11 +13,13 @@ private:
 
 public:
     Song();
-    Song(std::string title, std::string author);
+    Song(std::string title, std::string author = "");
     std::string getTitle();
     std::string getAuthor();
     void setTitle(std::string title);
     void setAuthor(std::string author);
+    bool operator==(Song &b);
+    friend std::ostream& operator<<(std::ostream& os, const Song& song);
 };
 
 #endif
