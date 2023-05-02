@@ -1,3 +1,8 @@
+/**
+ * @file LinkedList.hpp
+ * @brief Arquivo que contém a classe LinkedList.
+ */
+
 #ifndef LINKEDLIST_HPP
 #define LINKEDLIST_HPP
 
@@ -6,7 +11,7 @@
 #include "Node.hpp"
 
 /**
- * @brief Classe que implementa listas encadeadas do tipo template.
+ * @brief Classe que implementa uma lista encadeada template.
  * 
  * @tparam T Tipo do valor armazenado na lista.
  */
@@ -14,21 +19,32 @@ template <typename T>
 class LinkedList{
 
 private:
-    Node<T> *head; //Ponteiro para o primeiro elemento da lista
-    Node<T> *tail; //Ponteiro para o último elemento da lista
+    Node<T> *head; //!< Ponteiro para o primeiro elemento da lista
+    Node<T> *tail; //!< Ponteiro para o último elemento da lista
 
 public:
+    // Construtor da lista encadeada. 
     LinkedList();
+    ~LinkedList();
+    // Remove todos os elementos da lista. 
     void clear();
+    // Retorna o tamanho da lista encadeada. 
     size_t getSize() const;
+    // Retorna a cabeça da lista. 
     Node<T> *getHead();
+    // Retorna a cauda da lista. 
     Node<T> *getTail();
+    // Altera o ponteiro cabeça da lista. 
     void setHead(Node<T> *head);
+    // Altera o ponteiro cauda da lista. 
     void setTail(Node<T> *tail);
+    // Adiciona um novo elemento com valor especificado ao final da lista. 
     void add(T value);
-    int searchValue(T value);
-    void removeIndex(size_t index);
+    // Procura um elemento específico na lista. 
+    T *searchValue(T value);
+    // Remove o elemento especificado da lista. 
     void removeValue(T value);
+    // Imprime todos os elementos da lista recursivamente. 
     void print();
 };
 
@@ -41,6 +57,14 @@ template <typename T>
 LinkedList<T>::LinkedList(){
     head = nullptr;
     tail = nullptr;
+}
+
+/**
+ * @brief Destrutor da lista encadeada, que remove todos os elementos.
+ */
+template <typename T>
+LinkedList<T>::~LinkedList(){
+    clear();
 }
 
 /**
@@ -63,7 +87,6 @@ void LinkedList<T>::clear(){
 /**
  * @brief Retorna o tamanho da lista encadeada.
  * 
- * 
  * @return Tamanho da lista.
  */
 template <typename T>
@@ -78,21 +101,41 @@ size_t LinkedList<T>::getSize() const{
     return size;
 }
 
+/**
+ * @brief Retorna a cabeça da lista.
+ * 
+ * @return Ponteiro para o primeiro elemento da lista.
+ */
 template <typename T>
 Node<T> *LinkedList<T>::getHead(){
     return head;
 }
 
+/**
+ * @brief Retorna a cauda da lista.
+ * 
+ * @return Ponteiro para o último elemento da lista.
+ */
 template <typename T>
 Node<T> *LinkedList<T>::getTail(){
     return tail;
 }
 
+/**
+ * @brief Altera o ponteiro cabeça da lista.
+ * 
+ * @param head Novo ponteiro.
+ */
 template <typename T>
 void LinkedList<T>::setHead(Node<T> *head){
     this->head = head;
 }
 
+/**
+ * @brief Altera o ponteiro cauda da lista.
+ * 
+ * @param tail Novo ponteiro.
+ */
 template <typename T>
 void LinkedList<T>::setTail(Node<T> *tail){
     this->tail = tail;
@@ -100,7 +143,6 @@ void LinkedList<T>::setTail(Node<T> *tail){
 
 /**
  * @brief Adiciona um novo elemento com valor especificado ao final da lista.
- * 
  * 
  * @param value Valor a ser adicionado.
  */
@@ -124,55 +166,19 @@ void LinkedList<T>::add(T value){
  * 
  * 
  * @param value Valor a ser buscado.
- * @return Retorna o índice do valor, caso ele esteja na lista, ou -1, caso contrário.
+ * @return Retorna o ponteiro para o valor, caso ele esteja na lista, ou nullptr, caso contrário.
  */
 template <typename T>
-int LinkedList<T>::searchValue(T value){
+T *LinkedList<T>::searchValue(T value){
     Node<T> *curr = head;
-    int index = 0;
+
     while(curr != nullptr){
         if(curr->getValue() == value){
-            return index;
+            return &(curr->getValue());
         }
-        index++;
-    }
-    return -1;
-}
-
-/**
- * @brief Remove o elemento no índice especificado da lista, caso o índice seja válido.
- * 
- * 
- * @param index Índice do valor a ser removido.
- */
-template <typename T>
-void LinkedList<T>::removeIndex(size_t index){
-    Node<T> *curr = head;
-    Node<T> *prev = nullptr;
-
-    // Verifica se índice é válido
-    if(index >= getSize()){
-        return;
-    }
-
-    for(int i=0; i<index; i++){
-        prev = curr;
         curr = curr->getNext();
     }
-
-    if(prev != nullptr){
-        prev->setNext(curr->getNext());
-        if(curr == tail){
-            tail = prev;
-        }
-    }
-    else{
-        head = curr->getNext();
-        if(head == nullptr){
-            tail = nullptr;
-        }
-    }
-    delete curr;
+    return nullptr;
 }
 
 /**
@@ -211,16 +217,18 @@ void LinkedList<T>::removeValue(T value){
 
 /**
  * @brief Imprime todos os elementos da lista recursivamente.
- * 
- * 
- * @param curr Ponteiro para o próximo elemento a ser impresso.
- * Caso não especificado, será usado o primeiro elemento da lista.
  */
 template <typename T>
 void LinkedList<T>::print(){
     printAux(head);
 }
 
+/**
+ * @brief Auxiliar para a função print. Imprime a lista recursivamente a partir
+ * do elemento especificado.
+ * 
+ * @param curr Primeiro elemento da lista a ser impresso.
+ */
 template <typename T>
 void printAux(Node<T> *curr){
     if(curr != nullptr){
