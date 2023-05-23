@@ -18,8 +18,10 @@ class Node{
     Node<T> *next; //!<Ponteiro para o próximo nó da lista encadeada.
 
 public:
+    //Construtor padrão.
+    Node() = default;
     //Construtor que recebe o valor a ser colocado no nó.
-    Node(T &value);
+    Node(const T &value);
     //Retorna o valor do nó atual.
     T &getValue();
     //Retorna o ponteiro para o próximo nó.
@@ -36,7 +38,7 @@ public:
  * @param value Valor do nó.
  */
 template <typename T>
-Node<T>::Node(T &value){
+Node<T>::Node(const T &value){
     setValue(value);
     setNext(nullptr);
 }

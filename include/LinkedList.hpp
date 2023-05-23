@@ -25,15 +25,18 @@ private:
 public:
     // Construtor da lista encadeada. 
     LinkedList();
+    // Construtor cópia da lista encadeada.
+    LinkedList(const LinkedList<T> &other);
+    // Destrutor da lista encadeada, que remove todos os elementos.
     ~LinkedList();
     // Remove todos os elementos da lista. 
     void clear();
     // Retorna o tamanho da lista encadeada. 
     size_t getSize() const;
     // Retorna a cabeça da lista. 
-    Node<T> *getHead();
+    Node<T> *getHead() const;
     // Retorna a cauda da lista. 
-    Node<T> *getTail();
+    Node<T> *getTail() const;
     // Altera o ponteiro cabeça da lista. 
     void setHead(Node<T> *head);
     // Altera o ponteiro cauda da lista. 
@@ -41,13 +44,21 @@ public:
     // Adiciona um novo elemento com valor especificado ao final da lista. 
     void add(T value);
     // Adiciona todos os elementos de uma lista ao final da lista.
-    void add(LinkedList<T> &other);
+    void add(const LinkedList<T> &other);
     // Procura um elemento específico na lista. 
     T *searchValue(T value);
+    // Remove o elemento no índice especificado da lista.
+    void popBack();
     // Remove o elemento especificado da lista. 
     void removeValue(T value);
+    // Remove todos os elementos de uma lista da lista.
+    void removeValue(LinkedList<T> &other);
     // Imprime todos os elementos da lista recursivamente. 
     void print();
+
+    LinkedList<T> operator+(LinkedList<T> &other);
+    const LinkedList<T> operator>>(Node<T> &node);
+    const LinkedList<T> operator<<(const Node<T> &node);
 };
 
 /**
@@ -59,6 +70,14 @@ template <typename T>
 LinkedList<T>::LinkedList(){
     head = nullptr;
     tail = nullptr;
+}
+
+template <typename T>
+LinkedList<T>::LinkedList(const LinkedList<T> &other){
+    head = nullptr;
+    tail = nullptr;
+
+    add(other);
 }
 
 /**
@@ -109,7 +128,7 @@ size_t LinkedList<T>::getSize() const{
  * @return Ponteiro para o primeiro elemento da lista.
  */
 template <typename T>
-Node<T> *LinkedList<T>::getHead(){
+Node<T> *LinkedList<T>::getHead() const{
     return head;
 }
 
@@ -119,7 +138,7 @@ Node<T> *LinkedList<T>::getHead(){
  * @return Ponteiro para o último elemento da lista.
  */
 template <typename T>
-Node<T> *LinkedList<T>::getTail(){
+Node<T> *LinkedList<T>::getTail() const{
     return tail;
 }
 
@@ -169,7 +188,7 @@ void LinkedList<T>::add(T value){
  * @param other Lista a ser adicionada.
  */
 template <typename T>
-void LinkedList<T>::add(LinkedList<T> &other){
+void LinkedList<T>::add(const LinkedList<T> &other){
     Node<T> *currNode = other.getHead();
     
     while(currNode != nullptr){
@@ -196,6 +215,33 @@ T *LinkedList<T>::searchValue(T value){
         curr = curr->getNext();
     }
     return nullptr;
+}
+
+/**
+ * @brief Remove o elemento no índice especificado da lista.
+ * 
+ * @param index Índice do elemento a ser removido.
+ */
+template <typename T>
+void LinkedList<T>::popBack(){
+    Node<T> *curr = head;
+    Node<T> *prev = nullptr;
+
+    while(curr->getNext() != nullptr){
+        prev = curr;
+        curr = curr->getNext();
+    }
+
+    if(prev != nullptr){
+        prev->setNext(nullptr);
+        tail = prev;
+    }
+    else{
+        head = nullptr;
+        tail = nullptr;
+    }
+
+    delete curr;
 }
 
 /**
@@ -231,6 +277,20 @@ void LinkedList<T>::removeValue(T value){
     }
 }
 
+/**
+ * @brief Remove todos os elementos de uma lista da lista.
+ * 
+ * @param other Lista com elementos a serem removidos.
+ */
+template <typename T>
+void LinkedList<T>::removeValue(LinkedList<T> &other){
+    Node<T> *currNode = other.getHead;
+
+    while(currNode != nullptr) {
+        removeValue(currNode->getValue());
+        currNode = currNode->getNext();
+    }
+}
 
 /**
  * @brief Imprime todos os elementos da lista recursivamente.
@@ -252,6 +312,37 @@ void printAux(Node<T> *curr){
         std::cout << curr->getValue() << std::endl;
         printAux(curr->getNext());
     }
+}
+
+template <typename T>
+LinkedList<T> LinkedList<T>::operator+(LinkedList<T> &other){
+    LinkedList<T> newList;
+    newList.add(*this);
+    newList.add(other);
+
+    return newList;
+}
+
+template <typename T>
+const LinkedList<T> LinkedList<T>::operator>>(Node<T> &node){
+    Node<T> *currNode = head;
+
+    while(currNode->getNext() != nullptr){
+        currNode = currNode->getNext();
+    }
+
+    node = *currNode;
+    popBack();
+
+    return *this;
+}
+
+template <typename T>
+const LinkedList<T> LinkedList<T>::operator<<(const Node<T> &node){
+    if(node != nullptr){
+        add(node.getValue());
+    }
+    return *this;
 }
 
 #endif
