@@ -40,6 +40,8 @@ public:
     void setTail(Node<T> *tail);
     // Adiciona um novo elemento com valor especificado ao final da lista. 
     void add(T value);
+    // Adiciona todos os elementos de uma lista ao final da lista.
+    void add(LinkedList<T> &other);
     // Procura um elemento específico na lista. 
     T *searchValue(T value);
     // Remove o elemento especificado da lista. 
@@ -158,6 +160,21 @@ void LinkedList<T>::add(T value){
     else{
         tail->setNext(newNode);
         tail = newNode;
+    }
+}
+
+/**
+ * @brief Adiciona todos os elementos de uma lista ao final da lista.
+ * 
+ * @param other Lista a ser adicionada.
+ */
+template <typename T>
+void LinkedList<T>::add(LinkedList<T> &other){
+    Node<T> *currNode = other.getHead();
+    
+    while(currNode != nullptr){
+        this->add(currNode->getValue());
+        currNode = currNode->getNext();
     }
 }
 
