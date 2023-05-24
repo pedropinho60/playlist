@@ -25,6 +25,12 @@ Playlist::Playlist(std::string name){
     this->name = name;
 }
 
+Playlist::Playlist(Playlist &other){
+    this->name = other.name;
+
+    this->addSong(other);
+}
+
 /**
  * @brief Destrutor da playlist, que remove todas as músicas.
  */
@@ -46,7 +52,7 @@ size_t Playlist::getSize(){
  * 
  * @return Nome da playlist.
  */
-std::string Playlist::getName(){
+const std::string& Playlist::getName() const{
     return name;
 }
 
@@ -55,7 +61,7 @@ std::string Playlist::getName(){
  * 
  * @return Referência para a lista de músicas.
  */
-LinkedList<Song> &Playlist::getSongs(){
+LinkedList<Song> &Playlist::getSongs() {
     return songs;
 }
 
@@ -64,8 +70,17 @@ LinkedList<Song> &Playlist::getSongs(){
  * 
  * @param song Música a ser adicionada.
  */
-void Playlist::addSong(Song song){
+void Playlist::addSong(Song &song){
     getSongs().add(song);
+}
+
+/**
+ * @brief Adiciona todas as músicas de uma outra playlist à playlist.
+ * 
+ * @param playlist Playlist a ser adicionada.
+ */
+void Playlist::addSong(const Playlist &playlist){
+    getSongs().add(playlist.songs);
 }
 
 /**
@@ -73,8 +88,18 @@ void Playlist::addSong(Song song){
  * 
  * @param title Título da música.
  */
-void Playlist::removeSong(Song song){
+void Playlist::removeSong(Song &song){
     getSongs().removeValue(song);
+}
+
+int Playlist::removeSong(Playlist playlist){
+    int removed = 0;
+    for (Node<Song> *song = playlist.getSongs().getHead(); song != nullptr; song = song->getNext()){
+        if (getSongs().removeValue(song->getValue())){
+            removed++;
+        }
+    }
+    return removed;
 }
 
 /**
@@ -84,7 +109,7 @@ void Playlist::removeSong(Song song){
  * @return Retorna o ponteiro para a música, caso ela esteja na lista, ou nullptr
  * caso contrário.
  */
-Song *Playlist::searchSong(Song song){
+Song *Playlist::searchSong(Song &song){
     return getSongs().searchValue(song);
 }
 
@@ -103,6 +128,46 @@ void Playlist::printSongs(){
  */
 bool Playlist::operator==(Playlist &b){
     return this->getName() == b.getName();
+}
+
+Playlist Playlist::operator+(const Playlist &other){
+    Playlist newPl(name + " + " + other.name);
+    newPl.addSong(*this);
+
+    Node<Song> *currNode = other.songs.getHead();
+
+    while(currNode != nullptr){
+        Song currSong = currNode->getValue();
+        if(newPl.searchSong(currSong) == nullptr){
+            newPl.addSong(currSong);
+        }
+
+        currNode = currNode->getNext();
+    }
+
+    return newPl;
+}
+
+Playlist Playlist::operator+(Song &song){
+    Playlist newPl(*this);
+    if(newPl.searchSong(song) == nullptr){
+        newPl.addSong(song);
+    }
+
+    return newPl;
+}
+
+Playlist& Playlist::operator=(const Playlist &other){
+    if(this == &other){
+        return *this;
+    }
+
+    songs.clear();
+
+    addSong(other);
+    name = other.name;
+
+    return *this;
 }
 
 /**
