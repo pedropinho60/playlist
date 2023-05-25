@@ -48,17 +48,17 @@ public:
     // Procura um elemento específico na lista. 
     T *searchValue(T value);
     // Remove o elemento no índice especificado da lista.
-    void popBack();
+    T popBack();
     // Remove o elemento especificado da lista. 
     int removeValue(T value);
-    // Remove os elementos de uma outra lista da lista. Remove apenas a primeira ocorrência de cada elemento.
+    // Remove todos os elementos de uma lista da lista.
     void removeValue(LinkedList<T> &other);
     // Imprime todos os elementos da lista recursivamente. 
     void print();
 
     LinkedList<T> operator+(LinkedList<T> &other);
-    const LinkedList<T>& operator>>(Node<T> &node);
-    LinkedList<T>& operator<<(const Node<T> &node);
+    const LinkedList<T> operator>>(Node<T> &node);
+    const LinkedList<T> operator<<(const Node<T> &node);
 };
 
 /**
@@ -72,11 +72,6 @@ LinkedList<T>::LinkedList(){
     tail = nullptr;
 }
 
-/**
- * @brief Construtor cópia da lista encadeada.
- * 
- * @param other Referência para a lista a ser copiada.
- */
 template <typename T>
 LinkedList<T>::LinkedList(const LinkedList<T> &other){
     head = nullptr;
@@ -228,7 +223,7 @@ T *LinkedList<T>::searchValue(T value){
  * @param index Índice do elemento a ser removido.
  */
 template <typename T>
-void LinkedList<T>::popBack(){
+T LinkedList<T>::popBack(){
     Node<T> *curr = head;
     Node<T> *prev = nullptr;
 
@@ -246,14 +241,16 @@ void LinkedList<T>::popBack(){
         tail = nullptr;
     }
 
+    return curr->getValue();
+
     delete curr;
 }
 
 /**
  * @brief Remove o elemento especificado da lista.
+ * 
  *
  * @param value Valor a ser removido.
- * @return 1 se o elemento foi removido, 0 caso contrário.
  */
 template <typename T>
 int LinkedList<T>::removeValue(T value){
@@ -290,7 +287,7 @@ int LinkedList<T>::removeValue(T value){
  */
 template <typename T>
 void LinkedList<T>::removeValue(LinkedList<T> &other){
-    Node<T> *currNode = other.getHead();
+    Node<T> *currNode = other.getHead;
 
     while(currNode != nullptr) {
         removeValue(currNode->getValue());
@@ -330,7 +327,7 @@ LinkedList<T> LinkedList<T>::operator+(LinkedList<T> &other){
 }
 
 template <typename T>
-const LinkedList<T>& LinkedList<T>::operator>>(Node<T> &node){
+const LinkedList<T> LinkedList<T>::operator>>(Node<T> &node){
     Node<T> *currNode = head;
 
     while(currNode->getNext() != nullptr){
@@ -344,10 +341,10 @@ const LinkedList<T>& LinkedList<T>::operator>>(Node<T> &node){
 }
 
 template <typename T>
-LinkedList<T>& LinkedList<T>::operator<<(const Node<T> &node){
-    // if(node != nullptr) ?????
-    add(node.getValue());
-    
+const LinkedList<T> LinkedList<T>::operator<<(const Node<T> &node){
+    if(node != nullptr){
+        add(node.getValue());
+    }
     return *this;
 }
 

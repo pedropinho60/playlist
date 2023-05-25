@@ -25,7 +25,7 @@ Playlist::Playlist(std::string name){
     this->name = name;
 }
 
-Playlist::Playlist(Playlist &other){
+Playlist::Playlist(const Playlist &other){
     this->name = other.name;
 
     this->addSong(other);
@@ -92,10 +92,10 @@ void Playlist::removeSong(Song &song){
     getSongs().removeValue(song);
 }
 
-int Playlist::removeSong(Playlist playlist){
+int Playlist::removeSong(const Playlist &playlist){
     int removed = 0;
-    for (Node<Song> *song = playlist.getSongs().getHead(); song != nullptr; song = song->getNext()){
-        if (getSongs().removeValue(song->getValue())){
+    for (Node<Song> *song = playlist.songs.getHead(); song != nullptr; song = song->getNext()){
+        if (songs.removeValue(song->getValue())){
             removed++;
         }
     }
@@ -155,6 +155,33 @@ Playlist Playlist::operator+(Song &song){
     }
 
     return newPl;
+}
+
+Playlist Playlist::operator-(const Playlist &other){
+    Playlist newPl(name + " - " + other.name);
+    newPl.addSong(*this);
+    newPl.removeSong(other);
+
+    return newPl;
+}
+
+Playlist Playlist::operator-(Song &song){
+    Playlist newPl(*this);
+    newPl.removeSong(song);
+
+    return newPl;
+}
+
+Playlist Playlist::operator>>(Song &song){
+    song = this->songs.popBack();
+
+    return *this;
+}
+
+Playlist& Playlist::operator<<(Song &song){
+    this->addSong(song);
+
+    return *this;
 }
 
 Playlist& Playlist::operator=(const Playlist &other){

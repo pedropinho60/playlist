@@ -27,7 +27,7 @@ public:
     // Construtor da playlist que recebe seu nome. 
     Playlist(std::string name);
     // Construtor cópia da playlist.
-    Playlist(Playlist &other);
+    Playlist(const Playlist &other);
     // Destrutor da playlist, que remove todas as músicas. 
     ~Playlist();
     // Retorna o tamanho da playlist.
@@ -43,7 +43,7 @@ public:
     // Remove a música especificada da playlist. 
     void removeSong(Song &song);
     // Remove todas as músicas de uma outra playlist da playlist.
-    int removeSong(Playlist playlist);
+    int removeSong(const Playlist &playlist);
     // Procura uma música na playlist. 
     Song *searchSong(Song &song);
     // Imprime as músicas da playlist. 
@@ -53,7 +53,11 @@ public:
     // Sobrecarga de operador de união da playlist.
     Playlist operator+(const Playlist &other);
     Playlist operator+(Song &song);
+    Playlist operator-(const Playlist &other);
+    Playlist operator-(Song &song);
     Playlist& operator=(const Playlist &other);
+    Playlist operator>>(Song &song);
+    Playlist& operator<<(Song &song);
     // Sobrecarga de operador de inserção da playlist. 
     friend std::ostream& operator<<(std::ostream& os, const Playlist& playlist);
 };
