@@ -172,7 +172,7 @@ Playlist Playlist::operator-(Song &song){
     return newPl;
 }
 
-Playlist Playlist::operator>>(Song &song){
+Playlist& Playlist::operator>>(Song &song){
     song = this->songs.popBack();
 
     return *this;

@@ -56,7 +56,7 @@ public:
     Playlist operator-(const Playlist &other);
     Playlist operator-(Song &song);
     Playlist& operator=(const Playlist &other);
-    Playlist operator>>(Song &song);
+    Playlist& operator>>(Song &song);
     Playlist& operator<<(Song &song);
     // Sobrecarga de operador de inserção da playlist. 
     friend std::ostream& operator<<(std::ostream& os, const Playlist& playlist);
