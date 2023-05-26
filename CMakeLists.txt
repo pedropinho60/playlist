@@ -10,4 +10,10 @@ add_executable( program
                 src/Playlist.cpp
                 )
 
+add_executable( test
+                src/test.cpp
+                src/Song.cpp
+                src/Playlist.cpp
+                )
+
 set_property(TARGET program PROPERTY CXX_STANDARD 11)
