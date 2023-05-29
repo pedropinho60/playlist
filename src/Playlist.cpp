@@ -88,10 +88,16 @@ void Playlist::addSong(const Playlist &playlist){
  * 
  * @param title Título da música.
  */
-void Playlist::removeSong(Song &song){
+void Playlist::removeSong(const Song &song){
     getSongs().removeValue(song);
 }
 
+/**
+ * @brief Remove da playlist todas as músicas na playlist recebida.
+ *
+ * @param Playlist com músicas a serem removidas.
+ * @return Número de músicas removidas.
+ */
 int Playlist::removeSong(const Playlist &playlist){
     int removed = 0;
     for (Node<Song> *song = playlist.songs.getHead(); song != nullptr; song = song->getNext()){
@@ -109,7 +115,7 @@ int Playlist::removeSong(const Playlist &playlist){
  * @return Retorna o ponteiro para a música, caso ela esteja na lista, ou nullptr
  * caso contrário.
  */
-Song *Playlist::searchSong(Song &song){
+Song *Playlist::searchSong(const Song &song){
     return getSongs().searchValue(song);
 }
 
@@ -130,6 +136,12 @@ bool Playlist::operator==(Playlist &b){
     return this->getName() == b.getName();
 }
 
+/**
+ * @brief Sobrecarga de operador de união de playlists.
+ *
+ * @param other Playlist cujas músicas serão unidas.
+ * @return Nova playlist com músicas das duas playlists, sem repetição.
+ */
 Playlist Playlist::operator+(const Playlist &other){
     Playlist newPl(name + " + " + other.name);
     newPl.addSong(*this);
@@ -148,6 +160,12 @@ Playlist Playlist::operator+(const Playlist &other){
     return newPl;
 }
 
+/**
+ * @brief Sobrecarga de operador de união de playlist com música.
+ *
+ * @param song Música a ser unida.
+ * @return Nova playlist unida com a música recebida, sem repetições.
+ */
 Playlist Playlist::operator+(Song &song){
     Playlist newPl(*this);
     if(newPl.searchSong(song) == nullptr){
@@ -157,6 +175,12 @@ Playlist Playlist::operator+(Song &song){
     return newPl;
 }
 
+/**
+ * @brief Sobrecarga de operador de diferença de playlists.
+ *
+ * @param other Playlist a ser subtraída.
+ * @return Nova playlist com todas as músicas da primeira que não estão na segunda.
+ */
 Playlist Playlist::operator-(const Playlist &other){
     Playlist newPl(name + " - " + other.name);
     newPl.addSong(*this);
@@ -165,6 +189,12 @@ Playlist Playlist::operator-(const Playlist &other){
     return newPl;
 }
 
+/**
+ * @brief Sobrecarga de operaador de diferença de playlist com música.
+ *
+ * @param song Música a ser removida.
+ * @return Nova playlist com todas as músicas da primeira, exceto a música recebida.
+ */
 Playlist Playlist::operator-(Song &song){
     Playlist newPl(*this);
     newPl.removeSong(song);
@@ -172,18 +202,12 @@ Playlist Playlist::operator-(Song &song){
     return newPl;
 }
 
-Playlist& Playlist::operator>>(Song &song){
-    song = this->songs.popBack();
-
-    return *this;
-}
-
-Playlist& Playlist::operator<<(Song &song){
-    this->addSong(song);
-
-    return *this;
-}
-
+/**
+ * @brief Sobrecarga de operador de atribuição de playlist.
+ *
+ * @param other Playlist a ser copiada.
+ * @return Playlist após a cópia.
+ */
 Playlist& Playlist::operator=(const Playlist &other){
     if(this == &other){
         return *this;
@@ -196,6 +220,34 @@ Playlist& Playlist::operator=(const Playlist &other){
 
     return *this;
 }
+
+/**
+ * @brief Sobrecarga de operador de extração de música de uma playlist.
+ *
+ * @param song Música que receberá a última música da playlist.
+ * @return Playlist sem a última música.
+ */
+Playlist& Playlist::operator>>(Song &song){
+    song = this->songs.popBack();
+
+    return *this;
+}
+
+/**
+ * @brief Sobrecarga de operador de inserção de música em playlist, sem repetição.
+ *
+ * @param song Música a ser inserida na playlist.
+ * @return Playlist com a música adicionada.
+ */
+Playlist& Playlist::operator<<(Song &song){
+    if(searchSong(song)==nullptr){
+        this->addSong(song);
+    }
+
+    return *this;
+}
+
+
 
 /**
  * @brief Sobrecarga de operador de inserção da playlist.
