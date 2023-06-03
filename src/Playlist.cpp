@@ -223,9 +223,12 @@ Playlist& Playlist::operator=(const Playlist &other){
  *
  * @param song Música que receberá a última música da playlist.
  * @return Playlist sem a última música.
+ * @note Não altera a música recebida caso a playlist esteja vazia.
  */
 Playlist& Playlist::operator>>(Song &song){
-    song = this->songs.popBack();
+    if(songs.getHead() != nullptr){
+        song = this->songs.popBack();
+    }
 
     return *this;
 }
