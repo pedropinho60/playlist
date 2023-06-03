@@ -144,7 +144,8 @@ int main(int argc, char *argv[]){
     LinkedList<Song> songs;
 
     if(argc != 2){
-        std::cout << "Número de argumentos inválido! Esperado 1 argumento (nome do arquivo).\n";
+        std::cout << "Número de argumentos inválido! "
+                  << "Esperado 1 argumento (nome do arquivo).\n";
         return 1;
     }
     
@@ -152,7 +153,8 @@ int main(int argc, char *argv[]){
     in_file.open(argv[1]);
 
     if(!in_file.is_open()){
-        std::cout << "Não foi possível abrir o arquivo \"" << argv[1] << "\"!\n";
+        std::cout << "Não foi possível abrir o arquivo \"" 
+                  << argv[1] << "\"!\n";
         return 1;
     }
     
