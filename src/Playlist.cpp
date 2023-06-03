@@ -209,15 +209,12 @@ Playlist Playlist::operator-(Song &song){
  * @return Playlist após a cópia.
  */
 Playlist& Playlist::operator=(const Playlist &other){
-    if(this == &other){
-        return *this;
+    if(this != &other){
+        songs.clear();
+
+        addSong(other);
+        name = other.name;
     }
-
-    songs.clear();
-
-    addSong(other);
-    name = other.name;
-
     return *this;
 }
 
@@ -234,7 +231,8 @@ Playlist& Playlist::operator>>(Song &song){
 }
 
 /**
- * @brief Sobrecarga de operador de inserção de música em playlist, sem repetição.
+ * @brief Sobrecarga de operador de inserção de música em playlist, 
+ * sem repetição.
  *
  * @param song Música a ser inserida na playlist.
  * @return Playlist com a música adicionada.
