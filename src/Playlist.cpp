@@ -248,8 +248,6 @@ Playlist& Playlist::operator<<(Song &song){
     return *this;
 }
 
-
-
 /**
  * @brief Sobrecarga de operador de inserção da playlist.
  */
