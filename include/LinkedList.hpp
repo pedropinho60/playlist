@@ -57,7 +57,7 @@ public:
     void print();
 
     LinkedList<T> operator+(LinkedList<T> &other);
-    const LinkedList<T> operator>>(Node<T> &node);
+    const LinkedList<T> &operator>>(Node<T> &node);
     const LinkedList<T> operator<<(const Node<T> &node);
 };
 
@@ -317,6 +317,13 @@ void printAux(Node<T> *curr){
     }
 }
 
+/**
+ * @brief Sobrecarga de operador de soma, que concatena duas listas.
+ *
+ * @param other Lista para concatenar.
+ * @return Nova lista com os elementos das duas listas.
+ * @note Não altera nenhuma das listas recebidas.
+ */
 template <typename T>
 LinkedList<T> LinkedList<T>::operator+(LinkedList<T> &other){
     LinkedList<T> newList;
@@ -326,25 +333,33 @@ LinkedList<T> LinkedList<T>::operator+(LinkedList<T> &other){
     return newList;
 }
 
+/**
+ * @brief Sobrecarga de operador de extração, que remove um elemento da lista e
+ * o coloca no nó recebido.
+ *
+ * @param node Nó a ser alterado.
+ * @return Referência para a lista, sem o último elemento.
+ * @note Caso a lista esteja vazia, não altera o nó recebido.
+ */
 template <typename T>
-const LinkedList<T> LinkedList<T>::operator>>(Node<T> &node){
-    Node<T> *currNode = head;
-
-    while(currNode->getNext() != nullptr){
-        currNode = currNode->getNext();
+const LinkedList<T> &LinkedList<T>::operator>>(Node<T> &node){
+    if(head != nullptr){
+        node = tail;
+        popBack();
     }
-
-    node = *currNode;
-    popBack();
 
     return *this;
 }
 
+/**
+ * @brief Sobrecarga de operaador de inserção, que adiciona um elemento à lista.
+ *
+ * @param node Nó com elemento que será adicionado.
+ * @return Referência para a lista, com o elemento adicionado.
+ */
 template <typename T>
 const LinkedList<T> LinkedList<T>::operator<<(const Node<T> &node){
-    if(node != nullptr){
-        add(node.getValue());
-    }
+    add(node.getValue());
     return *this;
 }
 
