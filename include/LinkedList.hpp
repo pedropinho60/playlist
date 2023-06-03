@@ -55,9 +55,11 @@ public:
     void removeValue(LinkedList<T> &other);
     // Imprime todos os elementos da lista recursivamente. 
     void print();
-
+    // Sobrecarga de operador de soma, que concatena duas listas.
     LinkedList<T> operator+(LinkedList<T> &other);
+    // Sobrecarga de operador de extração, que remove um elemento da lista.
     const LinkedList<T> &operator>>(Node<T> &node);
+    // Sobrecarga de operador de inserção, que adiciona um elemento à lista.
     const LinkedList<T> operator<<(const Node<T> &node);
 };
 
@@ -352,7 +354,7 @@ const LinkedList<T> &LinkedList<T>::operator>>(Node<T> &node){
 }
 
 /**
- * @brief Sobrecarga de operaador de inserção, que adiciona um elemento à lista.
+ * @brief Sobrecarga de operador de inserção, que adiciona um elemento à lista.
  *
  * @param node Nó com elemento que será adicionado.
  * @return Referência para a lista, com o elemento adicionado.
