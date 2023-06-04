@@ -139,6 +139,8 @@ bool Playlist::operator==(Playlist &b){
 /**
  * @brief Sobrecarga de operador de união de playlists.
  *
+ * @note O nome da nova playlist é a concatenação dos nomes das duas playlists,
+ * com um sinal de mais entre eles.
  * @param other Playlist cujas músicas serão unidas.
  * @return Nova playlist com músicas das duas playlists, sem repetição.
  */
@@ -163,6 +165,7 @@ Playlist Playlist::operator+(const Playlist &other){
 /**
  * @brief Sobrecarga de operador de união de playlist com música.
  *
+ * @note O nome da nova playlist é igual ao da playlist original.
  * @param song Música a ser unida.
  * @return Nova playlist unida com a música recebida, sem repetições.
  */
@@ -178,6 +181,8 @@ Playlist Playlist::operator+(Song &song){
 /**
  * @brief Sobrecarga de operador de diferença de playlists.
  *
+ * @note O nome da nova playlist é a concatenação dos nomes das duas playlists,
+ * com um sinal de menos entre eles.
  * @param other Playlist a ser subtraída.
  * @return Nova playlist com todas as músicas da primeira que não estão na segunda.
  */
@@ -192,6 +197,7 @@ Playlist Playlist::operator-(const Playlist &other){
 /**
  * @brief Sobrecarga de operaador de diferença de playlist com música.
  *
+ * @note O nome da nova playlist é igual ao da playlist original.
  * @param song Música a ser removida.
  * @return Nova playlist com todas as músicas da primeira, exceto a música recebida.
  */
@@ -206,7 +212,7 @@ Playlist Playlist::operator-(Song &song){
  * @brief Sobrecarga de operador de atribuição de playlist.
  *
  * @param other Playlist a ser copiada.
- * @return Playlist após a cópia.
+ * @return Referência à playlist após a cópia.
  */
 Playlist& Playlist::operator=(const Playlist &other){
     if(this != &other){
