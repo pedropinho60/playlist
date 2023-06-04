@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['searchsong_0',['searchSong',['../classPlaylist.html#a83c6fbdd8a835b8a9f4138768a2247ca',1,'Playlist']]],
+  ['searchsong_0',['searchSong',['../classPlaylist.html#a3cb6503504ba1016866521235a8061c8',1,'Playlist']]],
   ['searchvalue_1',['searchValue',['../classLinkedList.html#a18c43911e5d1a31488c0299acf68aeaf',1,'LinkedList']]],
   ['setauthor_2',['setAuthor',['../classSong.html#aee431bcb08d17340d9eb3b6e1f990e36',1,'Song']]],
   ['sethead_3',['setHead',['../classLinkedList.html#ada61b42e752f21b06c6cdd0b6c21b1b7',1,'LinkedList']]],

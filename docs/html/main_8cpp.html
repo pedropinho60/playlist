@@ -83,6 +83,8 @@ $(function() {
 <a href="#details">Mais...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &quot;<a class="el" href="Node_8hpp_source.html">Node.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="LinkedList_8hpp_source.html">LinkedList.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Song_8hpp_source.html">Song.hpp</a>&quot;</code><br />
@@ -94,13 +96,63 @@ Funções</h2></td></tr>
 <tr class="memitem:a1310e1a9a31c61cae7202d3fe76357e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1310e1a9a31c61cae7202d3fe76357e7">setup</a> (<a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classSong.html">Song</a> &gt; &amp;songs, <a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classPlaylist.html">Playlist</a> &gt; &amp;playlists)</td></tr>
 <tr class="memdesc:a1310e1a9a31c61cae7202d3fe76357e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup inicial do programa, que adiciona exemplos de músicas e playlists para demonstrar as funcionalidades do programa.  <br /></td></tr>
 <tr class="separator:a1310e1a9a31c61cae7202d3fe76357e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea90cc79efc1bddfc8ccaae7b65ceb30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aea90cc79efc1bddfc8ccaae7b65ceb30">parseFile</a> (std::ifstream &amp;in_file, <a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classSong.html">Song</a> &gt; &amp;songs, <a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classPlaylist.html">Playlist</a> &gt; &amp;playlists)</td></tr>
+<tr class="memdesc:aea90cc79efc1bddfc8ccaae7b65ceb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lê o arquivo e adiciona as playlists e músicas ao sistema.  <br /></td></tr>
+<tr class="separator:aea90cc79efc1bddfc8ccaae7b65ceb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a2047d64e2f2cab94e4b683ea24f4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a14a2047d64e2f2cab94e4b683ea24f4c">writeFile</a> (std::ofstream &amp;out_file, <a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classSong.html">Song</a> &gt; &amp;songs, <a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classPlaylist.html">Playlist</a> &gt; &amp;playlists)</td></tr>
+<tr class="memdesc:a14a2047d64e2f2cab94e4b683ea24f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escreve as playlists e músicas do sistema ao arquivo.  <br /></td></tr>
+<tr class="separator:a14a2047d64e2f2cab94e4b683ea24f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top"><a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Arquivo principal do programa. </p>
 </div><h2 class="groupheader">Funções</h2>
+<a id="aea90cc79efc1bddfc8ccaae7b65ceb30" name="aea90cc79efc1bddfc8ccaae7b65ceb30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea90cc79efc1bddfc8ccaae7b65ceb30">&#9670;&#160;</a></span>parseFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void parseFile </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;&#160;</td>
+          <td class="paramname"><em>in_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classSong.html">Song</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>songs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classPlaylist.html">Playlist</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>playlists</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lê o arquivo e adiciona as playlists e músicas ao sistema. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in_file</td><td>Arquivo de entrada. </td></tr>
+    <tr><td class="paramname">songs</td><td>Lista encadeada de músicas. </td></tr>
+    <tr><td class="paramname">playlists</td><td>Lista encadeada de playlists. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1310e1a9a31c61cae7202d3fe76357e7" name="a1310e1a9a31c61cae7202d3fe76357e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1310e1a9a31c61cae7202d3fe76357e7">&#9670;&#160;</a></span>setup()</h2>
 
@@ -132,6 +184,50 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
   <table class="params">
     <tr><td class="paramname">songs</td><td>Lista encadeada (<a class="el" href="classLinkedList.html" title="Classe que implementa uma lista encadeada template.">LinkedList</a>) de músicas (<a class="el" href="classSong.html" title="Classe que representa uma música, contendo título e autor.">Song</a>) do sistema. </td></tr>
     <tr><td class="paramname">playlists</td><td>Lista encadeada (<a class="el" href="classLinkedList.html" title="Classe que implementa uma lista encadeada template.">LinkedList</a>) de playlists (<a class="el" href="classPlaylist.html" title="Classe que implementa uma playlist, contendo uma lista encadeada (LinkedList) de músicas (Song).">Playlist</a>) do sistema. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a14a2047d64e2f2cab94e4b683ea24f4c" name="a14a2047d64e2f2cab94e4b683ea24f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14a2047d64e2f2cab94e4b683ea24f4c">&#9670;&#160;</a></span>writeFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void writeFile </td>
+          <td>(</td>
+          <td class="paramtype">std::ofstream &amp;&#160;</td>
+          <td class="paramname"><em>out_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classSong.html">Song</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>songs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLinkedList.html">LinkedList</a>&lt; <a class="el" href="classPlaylist.html">Playlist</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>playlists</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Escreve as playlists e músicas do sistema ao arquivo. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out_file</td><td>Arquivo de saída. </td></tr>
+    <tr><td class="paramname">songs</td><td>Lista encadeada de músicas. </td></tr>
+    <tr><td class="paramname">playlists</td><td>Lista encadeada de playlists. </td></tr>
   </table>
   </dd>
 </dl>

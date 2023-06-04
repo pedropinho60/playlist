@@ -17,26 +17,47 @@ Classe que implementa uma playlist, contendo uma lista encadeada (\mbox{\hyperli
 \begin{DoxyCompactList}\small\item\em Construtor padrão da playlist. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPlaylist_adf45316c0031721406e101b5c822f089}{Playlist}} (std\+::string \mbox{\hyperlink{classPlaylist_a6b06305db2f4b7bfadccd994665501cf}{name}})
 \begin{DoxyCompactList}\small\item\em Construtor da playlist que recebe seu nome. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlaylist_a309452ed6242958f7b46c872b93b0594}\label{classPlaylist_a309452ed6242958f7b46c872b93b0594}} 
+{\bfseries Playlist} (const \mbox{\hyperlink{classPlaylist}{Playlist}} \&other)
+\item 
 \mbox{\Hypertarget{classPlaylist_aacd9a69e347fc19a9a0787d7a7ce9df4}\label{classPlaylist_aacd9a69e347fc19a9a0787d7a7ce9df4}} 
 {\bfseries $\sim$\+Playlist} ()
 \begin{DoxyCompactList}\small\item\em Destrutor da playlist, que remove todas as músicas. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{classPlaylist_af3a8ab6fa7f62859baa8173a50f26b19}{get\+Size}} ()
 \begin{DoxyCompactList}\small\item\em Retorna o tamanho da playlist. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classPlaylist_a569ad905cc657c46f25b210a21186b2f}{get\+Name}} ()
+const std\+::string \& \mbox{\hyperlink{classPlaylist_a6aeb5b1301c9f076f8b5df393b29a2cc}{get\+Name}} () const
 \begin{DoxyCompactList}\small\item\em Retorna o nome da playlist. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classSong}{Song}} $>$ \& \mbox{\hyperlink{classPlaylist_aac4307b74043ebea56f9d58d878610e3}{get\+Songs}} ()
 \begin{DoxyCompactList}\small\item\em Retorna uma referência para a lista encadeada de músicas. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPlaylist_ac17509b05b7fa10e6dcddc9f8f4e5505}{add\+Song}} (\mbox{\hyperlink{classSong}{Song}} song)
+void \mbox{\hyperlink{classPlaylist_a810fb2c6db48d52a20c44541838f1e5c}{add\+Song}} (\mbox{\hyperlink{classSong}{Song}} \&song)
 \begin{DoxyCompactList}\small\item\em Adiciona uma música à playlist. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPlaylist_a24705f9fab96b139fdde8d83b72c92d8}{remove\+Song}} (\mbox{\hyperlink{classSong}{Song}} song)
+void \mbox{\hyperlink{classPlaylist_ac11fd7200a463d6f595108f2cb1198fb}{add\+Song}} (const \mbox{\hyperlink{classPlaylist}{Playlist}} \&playlist)
+\begin{DoxyCompactList}\small\item\em Adiciona todas as músicas de uma outra playlist à playlist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlaylist_adc8999ebea2389c428f7674eb2ef471d}{remove\+Song}} (const \mbox{\hyperlink{classSong}{Song}} \&song)
 \begin{DoxyCompactList}\small\item\em Remove a música especificada da playlist. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classSong}{Song}} $\ast$ \mbox{\hyperlink{classPlaylist_a83c6fbdd8a835b8a9f4138768a2247ca}{search\+Song}} (\mbox{\hyperlink{classSong}{Song}} song)
+int \mbox{\hyperlink{classPlaylist_a7670ef0f263147fb8a383b75a20af725}{remove\+Song}} (const \mbox{\hyperlink{classPlaylist}{Playlist}} \&playlist)
+\begin{DoxyCompactList}\small\item\em Remove da playlist todas as músicas na playlist recebida. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSong}{Song}} $\ast$ \mbox{\hyperlink{classPlaylist_a3cb6503504ba1016866521235a8061c8}{search\+Song}} (const \mbox{\hyperlink{classSong}{Song}} \&song)
 \begin{DoxyCompactList}\small\item\em Procura uma música na playlist. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPlaylist_a352cd7aa99543baffb7aa2466d71bd96}\label{classPlaylist_a352cd7aa99543baffb7aa2466d71bd96}} 
 void {\bfseries print\+Songs} ()
 \begin{DoxyCompactList}\small\item\em Imprime as músicas da playlist. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPlaylist_a94e801ded5e47f21aa2ff1120803f485}{operator==}} (\mbox{\hyperlink{classPlaylist}{Playlist}} \&b)
-\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de igualdade. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de igualdade. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \mbox{\hyperlink{classPlaylist_a6888f91594b405c788fb76277314d03d}{operator+}} (const \mbox{\hyperlink{classPlaylist}{Playlist}} \&other)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de união de playlists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \mbox{\hyperlink{classPlaylist_a9673f01ab449526a309287ce25814134}{operator+}} (\mbox{\hyperlink{classSong}{Song}} \&song)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de união de playlist com música. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \mbox{\hyperlink{classPlaylist_a5e183d9632f60e328ff40dc03e44570b}{operator-\/}} (const \mbox{\hyperlink{classPlaylist}{Playlist}} \&other)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de diferença de playlists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \mbox{\hyperlink{classPlaylist_aa2654dc3032dca714b069b1db72b2c80}{operator-\/}} (\mbox{\hyperlink{classSong}{Song}} \&song)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operaador de diferença de playlist com música. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \& \mbox{\hyperlink{classPlaylist_a8b379fd05e068fc91346814edaa0d109}{operator=}} (const \mbox{\hyperlink{classPlaylist}{Playlist}} \&other)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de atribuição de playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \& \mbox{\hyperlink{classPlaylist_ac61abc884fdfe2ad3fcbef2edf54cf94}{operator$>$$>$}} (\mbox{\hyperlink{classSong}{Song}} \&song)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de extração de música de uma playlist. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlaylist}{Playlist}} \& \mbox{\hyperlink{classPlaylist_a17cc735f6849f7f2fa6f2457eea6233d}{operator$<$$<$}} (\mbox{\hyperlink{classSong}{Song}} \&song)
+\begin{DoxyCompactList}\small\item\em Sobrecarga de operador de inserção de música em playlist, sem repetição. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
@@ -76,11 +97,26 @@ Construtor da playlist que recebe seu nome.
 
 
 \doxysubsection{Documentação das funções}
-\mbox{\Hypertarget{classPlaylist_ac17509b05b7fa10e6dcddc9f8f4e5505}\label{classPlaylist_ac17509b05b7fa10e6dcddc9f8f4e5505}} 
+\mbox{\Hypertarget{classPlaylist_ac11fd7200a463d6f595108f2cb1198fb}\label{classPlaylist_ac11fd7200a463d6f595108f2cb1198fb}} 
 \index{Playlist@{Playlist}!addSong@{addSong}}
 \index{addSong@{addSong}!Playlist@{Playlist}}
-\doxysubsubsection{\texorpdfstring{addSong()}{addSong()}}
-{\footnotesize\ttfamily void Playlist\+::add\+Song (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}}}]{song }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{addSong()}{addSong()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Playlist\+::add\+Song (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlaylist}{Playlist}} \&}]{playlist }\end{DoxyParamCaption})}
+
+
+
+Adiciona todas as músicas de uma outra playlist à playlist. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em playlist} & \mbox{\hyperlink{classPlaylist}{Playlist}} a ser adicionada. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlaylist_a810fb2c6db48d52a20c44541838f1e5c}\label{classPlaylist_a810fb2c6db48d52a20c44541838f1e5c}} 
+\index{Playlist@{Playlist}!addSong@{addSong}}
+\index{addSong@{addSong}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{addSong()}{addSong()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Playlist\+::add\+Song (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
 
 
 
@@ -91,11 +127,11 @@ Adiciona uma música à playlist.
 {\em song} & Música a ser adicionada. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classPlaylist_a569ad905cc657c46f25b210a21186b2f}\label{classPlaylist_a569ad905cc657c46f25b210a21186b2f}} 
+\mbox{\Hypertarget{classPlaylist_a6aeb5b1301c9f076f8b5df393b29a2cc}\label{classPlaylist_a6aeb5b1301c9f076f8b5df393b29a2cc}} 
 \index{Playlist@{Playlist}!getName@{getName}}
 \index{getName@{getName}!Playlist@{Playlist}}
 \doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily std\+::string Playlist\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const std\+::string \& Playlist\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -130,6 +166,126 @@ Retorna uma referência para a lista encadeada de músicas.
 \begin{DoxyReturn}{Retorna}
 Referência para a lista de músicas. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_a6888f91594b405c788fb76277314d03d}\label{classPlaylist_a6888f91594b405c788fb76277314d03d}} 
+\index{Playlist@{Playlist}!operator+@{operator+}}
+\index{operator+@{operator+}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} Playlist\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlaylist}{Playlist}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operador de união de playlists. 
+
+\begin{DoxyNote}{Observação}
+O nome da nova playlist é a concatenação dos nomes das duas playlists, com um sinal de mais entre eles. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parâmetros}
+{\em other} & \mbox{\hyperlink{classPlaylist}{Playlist}} cujas músicas serão unidas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nova playlist com músicas das duas playlists, sem repetição. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_a9673f01ab449526a309287ce25814134}\label{classPlaylist_a9673f01ab449526a309287ce25814134}} 
+\index{Playlist@{Playlist}!operator+@{operator+}}
+\index{operator+@{operator+}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} Playlist\+::operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operador de união de playlist com música. 
+
+\begin{DoxyNote}{Observação}
+O nome da nova playlist é igual ao da playlist original. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parâmetros}
+{\em song} & Música a ser unida. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nova playlist unida com a música recebida, sem repetições. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_a5e183d9632f60e328ff40dc03e44570b}\label{classPlaylist_a5e183d9632f60e328ff40dc03e44570b}} 
+\index{Playlist@{Playlist}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} Playlist\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlaylist}{Playlist}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operador de diferença de playlists. 
+
+\begin{DoxyNote}{Observação}
+O nome da nova playlist é a concatenação dos nomes das duas playlists, com um sinal de menos entre eles. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parâmetros}
+{\em other} & \mbox{\hyperlink{classPlaylist}{Playlist}} a ser subtraída. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nova playlist com todas as músicas da primeira que não estão na segunda. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_aa2654dc3032dca714b069b1db72b2c80}\label{classPlaylist_aa2654dc3032dca714b069b1db72b2c80}} 
+\index{Playlist@{Playlist}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} Playlist\+::operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operaador de diferença de playlist com música. 
+
+\begin{DoxyNote}{Observação}
+O nome da nova playlist é igual ao da playlist original. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parâmetros}
+{\em song} & Música a ser removida. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nova playlist com todas as músicas da primeira, exceto a música recebida. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_a17cc735f6849f7f2fa6f2457eea6233d}\label{classPlaylist_a17cc735f6849f7f2fa6f2457eea6233d}} 
+\index{Playlist@{Playlist}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} \& Playlist\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operador de inserção de música em playlist, sem repetição. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em song} & Música a ser inserida na playlist. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+\mbox{\hyperlink{classPlaylist}{Playlist}} com a música adicionada. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_a8b379fd05e068fc91346814edaa0d109}\label{classPlaylist_a8b379fd05e068fc91346814edaa0d109}} 
+\index{Playlist@{Playlist}!operator=@{operator=}}
+\index{operator=@{operator=}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} \& Playlist\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlaylist}{Playlist}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operador de atribuição de playlist. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em other} & \mbox{\hyperlink{classPlaylist}{Playlist}} a ser copiada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Referência à playlist após a cópia. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classPlaylist_a94e801ded5e47f21aa2ff1120803f485}\label{classPlaylist_a94e801ded5e47f21aa2ff1120803f485}} 
 \index{Playlist@{Playlist}!operator==@{operator==}}
 \index{operator==@{operator==}!Playlist@{Playlist}}
@@ -145,11 +301,50 @@ Retorna true se o nome das playlists for igual.
 
 Retorna false caso contrário. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classPlaylist_a24705f9fab96b139fdde8d83b72c92d8}\label{classPlaylist_a24705f9fab96b139fdde8d83b72c92d8}} 
+\mbox{\Hypertarget{classPlaylist_ac61abc884fdfe2ad3fcbef2edf54cf94}\label{classPlaylist_ac61abc884fdfe2ad3fcbef2edf54cf94}} 
+\index{Playlist@{Playlist}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlaylist}{Playlist}} \& Playlist\+::operator$>$$>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga de operador de extração de música de uma playlist. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em song} & Música que receberá a última música da playlist. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+\mbox{\hyperlink{classPlaylist}{Playlist}} sem a última música. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Observação}
+Não altera a música recebida caso a playlist esteja vazia. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classPlaylist_a7670ef0f263147fb8a383b75a20af725}\label{classPlaylist_a7670ef0f263147fb8a383b75a20af725}} 
 \index{Playlist@{Playlist}!removeSong@{removeSong}}
 \index{removeSong@{removeSong}!Playlist@{Playlist}}
-\doxysubsubsection{\texorpdfstring{removeSong()}{removeSong()}}
-{\footnotesize\ttfamily void Playlist\+::remove\+Song (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}}}]{song }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{removeSong()}{removeSong()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Playlist\+::remove\+Song (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlaylist}{Playlist}} \&}]{playlist }\end{DoxyParamCaption})}
+
+
+
+Remove da playlist todas as músicas na playlist recebida. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \mbox{\hyperlink{classPlaylist}{Playlist}}} & com músicas a serem removidas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Número de músicas removidas. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlaylist_adc8999ebea2389c428f7674eb2ef471d}\label{classPlaylist_adc8999ebea2389c428f7674eb2ef471d}} 
+\index{Playlist@{Playlist}!removeSong@{removeSong}}
+\index{removeSong@{removeSong}!Playlist@{Playlist}}
+\doxysubsubsection{\texorpdfstring{removeSong()}{removeSong()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Playlist\+::remove\+Song (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
 
 
 
@@ -160,11 +355,11 @@ Remove a música especificada da playlist.
 {\em title} & Título da música. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classPlaylist_a83c6fbdd8a835b8a9f4138768a2247ca}\label{classPlaylist_a83c6fbdd8a835b8a9f4138768a2247ca}} 
+\mbox{\Hypertarget{classPlaylist_a3cb6503504ba1016866521235a8061c8}\label{classPlaylist_a3cb6503504ba1016866521235a8061c8}} 
 \index{Playlist@{Playlist}!searchSong@{searchSong}}
 \index{searchSong@{searchSong}!Playlist@{Playlist}}
 \doxysubsubsection{\texorpdfstring{searchSong()}{searchSong()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classSong}{Song}} $\ast$ Playlist\+::search\+Song (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSong}{Song}}}]{song }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSong}{Song}} $\ast$ Playlist\+::search\+Song (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSong}{Song}} \&}]{song }\end{DoxyParamCaption})}
 
 
 

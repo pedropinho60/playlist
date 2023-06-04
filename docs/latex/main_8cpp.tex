@@ -7,6 +7,8 @@ Arquivo principal do programa.
 
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
 {\ttfamily \#include \char`\"{}Node.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Linked\+List.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Song.\+hpp\char`\"{}}\newline
@@ -17,8 +19,12 @@ Arquivo principal do programa.
 \item 
 void \mbox{\hyperlink{main_8cpp_a1310e1a9a31c61cae7202d3fe76357e7}{setup}} (\mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classSong}{Song}} $>$ \&songs, \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classPlaylist}{Playlist}} $>$ \&playlists)
 \begin{DoxyCompactList}\small\item\em Setup inicial do programa, que adiciona exemplos de músicas e playlists para demonstrar as funcionalidades do programa. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
-int {\bfseries main} ()
+void \mbox{\hyperlink{main_8cpp_aea90cc79efc1bddfc8ccaae7b65ceb30}{parse\+File}} (std\+::ifstream \&in\+\_\+file, \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classSong}{Song}} $>$ \&songs, \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classPlaylist}{Playlist}} $>$ \&playlists)
+\begin{DoxyCompactList}\small\item\em Lê o arquivo e adiciona as playlists e músicas ao sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a14a2047d64e2f2cab94e4b683ea24f4c}{write\+File}} (std\+::ofstream \&out\+\_\+file, \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classSong}{Song}} $>$ \&songs, \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classPlaylist}{Playlist}} $>$ \&playlists)
+\begin{DoxyCompactList}\small\item\em Escreve as playlists e músicas do sistema ao arquivo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
 
 
@@ -28,6 +34,25 @@ Arquivo principal do programa.
 
 
 \doxysubsection{Funções}
+\mbox{\Hypertarget{main_8cpp_aea90cc79efc1bddfc8ccaae7b65ceb30}\label{main_8cpp_aea90cc79efc1bddfc8ccaae7b65ceb30}} 
+\index{main.cpp@{main.cpp}!parseFile@{parseFile}}
+\index{parseFile@{parseFile}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{parseFile()}{parseFile()}}
+{\footnotesize\ttfamily void parse\+File (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{in\+\_\+file,  }\item[{\mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classSong}{Song}} $>$ \&}]{songs,  }\item[{\mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classPlaylist}{Playlist}} $>$ \&}]{playlists }\end{DoxyParamCaption})}
+
+
+
+Lê o arquivo e adiciona as playlists e músicas ao sistema. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em in\+\_\+file} & Arquivo de entrada. \\
+\hline
+{\em songs} & Lista encadeada de músicas. \\
+\hline
+{\em playlists} & Lista encadeada de playlists. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{main_8cpp_a1310e1a9a31c61cae7202d3fe76357e7}\label{main_8cpp_a1310e1a9a31c61cae7202d3fe76357e7}} 
 \index{main.cpp@{main.cpp}!setup@{setup}}
 \index{setup@{setup}!main.cpp@{main.cpp}}
@@ -43,5 +68,24 @@ Setup inicial do programa, que adiciona exemplos de músicas e playlists para de
 {\em songs} & Lista encadeada (\mbox{\hyperlink{classLinkedList}{Linked\+List}}) de músicas (\mbox{\hyperlink{classSong}{Song}}) do sistema. \\
 \hline
 {\em playlists} & Lista encadeada (\mbox{\hyperlink{classLinkedList}{Linked\+List}}) de playlists (\mbox{\hyperlink{classPlaylist}{Playlist}}) do sistema. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8cpp_a14a2047d64e2f2cab94e4b683ea24f4c}\label{main_8cpp_a14a2047d64e2f2cab94e4b683ea24f4c}} 
+\index{main.cpp@{main.cpp}!writeFile@{writeFile}}
+\index{writeFile@{writeFile}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{writeFile()}{writeFile()}}
+{\footnotesize\ttfamily void write\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{out\+\_\+file,  }\item[{\mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classSong}{Song}} $>$ \&}]{songs,  }\item[{\mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ \mbox{\hyperlink{classPlaylist}{Playlist}} $>$ \&}]{playlists }\end{DoxyParamCaption})}
+
+
+
+Escreve as playlists e músicas do sistema ao arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em out\+\_\+file} & Arquivo de saída. \\
+\hline
+{\em songs} & Lista encadeada de músicas. \\
+\hline
+{\em playlists} & Lista encadeada de playlists. \\
 \hline
 \end{DoxyParams}
