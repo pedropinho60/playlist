@@ -233,7 +233,8 @@ Playlist& Playlist::operator=(const Playlist &other){
  */
 Playlist& Playlist::operator>>(Song &song){
     if(songs.getHead() != nullptr){
-        song = this->songs.popBack();
+        song = songs.getTail()->getValue();
+        this->songs.popBack();
     }
 
     return *this;

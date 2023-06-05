@@ -48,7 +48,7 @@ public:
     // Procura um elemento específico na lista. 
     T *searchValue(T value);
     // Remove o elemento no índice especificado da lista.
-    T popBack();
+    void popBack();
     // Remove o elemento especificado da lista. 
     int removeValue(T value);
     // Remove todos os elementos de uma lista da lista.
@@ -225,7 +225,7 @@ T *LinkedList<T>::searchValue(T value){
  * @param index Índice do elemento a ser removido.
  */
 template <typename T>
-T LinkedList<T>::popBack(){
+void LinkedList<T>::popBack(){
     Node<T> *curr = head;
     Node<T> *prev = nullptr;
 
@@ -242,8 +242,6 @@ T LinkedList<T>::popBack(){
         head = nullptr;
         tail = nullptr;
     }
-
-    return curr->getValue();
 
     delete curr;
 }
