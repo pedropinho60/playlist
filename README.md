@@ -39,3 +39,7 @@ para a próxima execução.
 ```
 ./build/program <nome-do-arquivo.txt>
 ```
+Se quiser utilizar o arquivo de exemplo, utilize:
+```
+./build/program example.txt
+```
