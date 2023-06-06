@@ -7,9 +7,8 @@ var searchData=
   ['setnext_4',['setNext',['../classNode.html#a486348d99412bba1c889db7dd63ca8cb',1,'Node']]],
   ['settail_5',['setTail',['../classLinkedList.html#ac81349168ff8b5c6f31f7749e825c7d0',1,'LinkedList']]],
   ['settitle_6',['setTitle',['../classSong.html#a6b585f51e48a7063675da6d125467b6e',1,'Song']]],
-  ['setup_7',['setup',['../main_8cpp.html#a1310e1a9a31c61cae7202d3fe76357e7',1,'main.cpp']]],
-  ['setvalue_8',['setValue',['../classNode.html#afdabc78643a5cbab194de94274fa4f8d',1,'Node']]],
-  ['song_9',['Song',['../classSong.html#a1a73ff262627ce78860ec622859cf249',1,'Song::Song()'],['../classSong.html#a85b61d954dc14e0051f9ae34bfceb161',1,'Song::Song(std::string title, std::string author=&quot;&quot;)']]],
-  ['songmenu_10',['songMenu',['../menu_8hpp.html#aa9aad79a704885b521c4c144e227b805',1,'songMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp'],['../menu_8cpp.html#aa9aad79a704885b521c4c144e227b805',1,'songMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp']]],
-  ['songplaylistmenu_11',['songPlaylistMenu',['../menu_8hpp.html#a902bae388956c3f6114fe6f4e9ec6733',1,'songPlaylistMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp'],['../menu_8cpp.html#a902bae388956c3f6114fe6f4e9ec6733',1,'songPlaylistMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp']]]
+  ['setvalue_7',['setValue',['../classNode.html#afdabc78643a5cbab194de94274fa4f8d',1,'Node']]],
+  ['song_8',['Song',['../classSong.html#a1a73ff262627ce78860ec622859cf249',1,'Song::Song()'],['../classSong.html#a85b61d954dc14e0051f9ae34bfceb161',1,'Song::Song(std::string title, std::string author=&quot;&quot;)']]],
+  ['songmenu_9',['songMenu',['../menu_8hpp.html#aa9aad79a704885b521c4c144e227b805',1,'songMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp'],['../menu_8cpp.html#aa9aad79a704885b521c4c144e227b805',1,'songMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp']]],
+  ['songplaylistmenu_10',['songPlaylistMenu',['../menu_8hpp.html#a902bae388956c3f6114fe6f4e9ec6733',1,'songPlaylistMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp'],['../menu_8cpp.html#a902bae388956c3f6114fe6f4e9ec6733',1,'songPlaylistMenu(LinkedList&lt; Song &gt; &amp;songs, LinkedList&lt; Playlist &gt; &amp;playlists):&#160;menu.cpp']]]
 ];

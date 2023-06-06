@@ -10,10 +10,6 @@ add_executable( program
                 src/Playlist.cpp
                 )
 
-add_executable( test
-                src/test.cpp
-                src/Song.cpp
-                src/Playlist.cpp
-                )
-
 set_property(TARGET program PROPERTY CXX_STANDARD 11)
+#Adds the -Wall flag to the compiler
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
